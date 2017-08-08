@@ -10,7 +10,7 @@ BusSubscriber.bind(activity or fragemnt).bindEvent(eventID).onNext((event) -> {}
 普通事件:  BusObservable.bind().sendEvent(new BusEvent(eventID, "content"))  
 sticky事件:BusObservable.bind().sendStickyEvent(new BusEvent(eventID, "content"))  
 
-#ViewBInder  
+ViewBInder  
 ----  
 https://github.com/RunFeifei/Commons/tree/master/common/src/main/java/com/fei/root/common/viewbinder  
 主要针对ButterKnife对module的支持不好,采用反射获取R文件Id值来减少findViewById代码书写  

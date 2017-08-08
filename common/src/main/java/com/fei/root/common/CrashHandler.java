@@ -20,21 +20,21 @@ import java.util.List;
 
 public class CrashHandler implements UncaughtExceptionHandler {
     public static final String TAG = CrashHandler.class.getSimpleName();
-    private static final String FILE_KEY = "crash_file";
+    private static final String FILE_KEY = "crashs";
     private static final int TOAST_TIME = 2000;
     private static LinkedList<String> crashStacks;
     private static CrashHandler instance;
     private final Context context;
     private UncaughtExceptionHandler defaultHandler;
 
-    private Handler uiHandler;
+    private Handler handler;
 
-    private CrashHandler(Context c) {
-        this.context = c;
+    private CrashHandler(Context context) {
+        this.context = context;
         this.defaultHandler = Thread.getDefaultUncaughtExceptionHandler();
         Thread.setDefaultUncaughtExceptionHandler(this);
 
-        uiHandler = new Handler(Looper.getMainLooper());
+        handler = new Handler(Looper.getMainLooper());
     }
 
     /**
@@ -91,7 +91,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
 
         new Thread(() -> {
             Looper.prepare();
-            uiHandler.post(() -> Toast.makeText(context, "未知Crash!!!", Toast.LENGTH_SHORT).show());
+            handler.post(() -> Toast.makeText(context, "未知Crash!!!", Toast.LENGTH_SHORT).show());
             CrashHandler.this.saveCrashToFile(throwable);
             Looper.loop();
         }).start();
