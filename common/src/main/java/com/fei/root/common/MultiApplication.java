@@ -12,6 +12,9 @@ public class MultiApplication extends MultiDexApplication {
     }
 
     public static Context getContext() {
+        if (context == null) {
+            throw new NullPointerException("context is null in MultiApplication.java");
+        }
         return context;
     }
 
