@@ -7,7 +7,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.fei.root.common.utils.AppInfo;
-import com.fei.root.common.utils.StorageUtil;
+import com.fei.root.common.utils.Storage;
 
 import org.json.JSONObject;
 
@@ -45,7 +45,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
             throw new Exception("The CrashHandler is already initialized.");
         }
 
-        crashStacks = StorageUtil.getObject(context, FILE_KEY);
+        crashStacks = Storage.getObject(context, FILE_KEY);
         if (crashStacks == null) {
             crashStacks = new LinkedList<>();
         }
@@ -128,7 +128,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
                 crashStacks.removeLast();
             }
             crashStacks.addFirst(jsonObject.toString());
-            StorageUtil.putObject(context, FILE_KEY, crashStacks);
+            Storage.putObject(context, FILE_KEY, crashStacks);
         } catch (Exception e) {
             Log.e(CrashHandler.TAG, "save crash to file fails", e);
         }
