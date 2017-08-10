@@ -18,7 +18,7 @@ import java.util.UUID;
 /**
  * 用Acache解决方案
  */
-public class StorageUtil {
+public class Storage {
 
     private static String slUUID;
 
@@ -102,7 +102,7 @@ public class StorageUtil {
             return slUUID;
         }
 
-        SharedPreferences sp = StorageUtil.getAppPreferences();
+        SharedPreferences sp = Storage.getAppPreferences();
         slUUID = sp.getString("sl_uuid", null);
 
         if (slUUID == null) {

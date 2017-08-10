@@ -3,7 +3,9 @@ apply from: "./subproject-build.gradle"
 
 buildscript {
     repositories {
-        jcenter()
+        jcenter {
+            url "http://jcenter.bintray.com/"
+        }
         mavenCentral()
         maven {
             url "${HTTP_MAVEN_ALI}"
@@ -37,7 +39,9 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
+        jcenter {
+            url "http://jcenter.bintray.com/"
+        }
         mavenCentral()
         maven {
             url "${HTTP_MAVEN_ALI}"

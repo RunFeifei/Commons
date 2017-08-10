@@ -95,11 +95,11 @@ public class ViewBinder {
     private static Method getMatchMethod(Class<?> viewHodlderClass, int id) {
         Method[] methods = viewHodlderClass.getDeclaredMethods();
         for (Method method : methods) {
-            OnClick onClick = method.getAnnotation(OnClick.class);
-            if (onClick == null) {
+            OnClicker onClicker = method.getAnnotation(OnClicker.class);
+            if (onClicker == null) {
                 continue;
             }
-            if (id != onClick.id()) {
+            if (id != onClicker.id()) {
                 continue;
             }
             Class<?>[] methodClasses = method.getParameterTypes();

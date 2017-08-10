@@ -21,4 +21,9 @@
         <item name="android:homeAsUpIndicator">@drawable/home_indicator</item>
     </style>
 
+    <style name="Toast" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/toast_enter</item>
+        <item name="android:windowExitAnimation">@anim/toast_exit</item>
+    </style>
+
 </resources>

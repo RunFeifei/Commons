@@ -6,6 +6,7 @@ android {
     compileSdkVersion ANDROID_SDK_VERSION
     buildToolsVersion ANDROID_BUILD_TOOLS_VERSION
     defaultConfig {
+        multiDexEnabled true
         applicationId "com.fei.root.commons"
         minSdkVersion ANDROID_MIN_SDK_VERSION
         targetSdkVersion ANDROID_TARGET_SDK_VERSION
@@ -25,12 +26,24 @@ android {
     }
 
     packagingOptions {
+        exclude '.readme'
+        exclude 'LICENSE.txt'
         exclude 'META-INF/DEPENDENCIES'
-        exclude 'META-INF/NOTICE'
-        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LGPL2.1'
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/README.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+        exclude '**/pom.properties'
+        exclude '**/pom.properties'
     }
+
 }
 
 dependencies {
@@ -38,16 +51,12 @@ dependencies {
     compile "com.android.support:appcompat-v7:$ANDROID_SUPPORT_VERSION"
 
     compile 'com.jakewharton:butterknife:8.5.1'
-    compile 'com.ashokvarma.android:bottom-navigation-bar:1.4.1'
     compile 'com.trello:rxlifecycle:0.3.0'
     compile 'com.trello:rxlifecycle-components:0.3.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
-    compile 'com.amap.api:location:latest.integration'
-    compile 'com.amap.api:map2d:latest.integration'
-    compile 'com.facebook.rebound:rebound:0.3.8'
     compile 'com.android.support:multidex:1.0.1'
     testCompile 'junit:junit:4.12'
     apt 'com.jakewharton:butterknife-compiler:8.5.1'
-    compile 'com.bintray.run:common:1.0.0'
     compile 'com.bintray.run:crnetwork:1.0.2'
+    compile project(path: ':common')
 }
