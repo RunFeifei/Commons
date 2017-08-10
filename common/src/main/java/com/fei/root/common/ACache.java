@@ -19,7 +19,7 @@
  * Website: http://www.gcssloop.com
  * Weibo:   http://weibo.com/GcsSloop
  */
-package com.fei.root.common.utils;
+package com.fei.root.common;
 
 import android.content.Context;
 import android.graphics.Bitmap;

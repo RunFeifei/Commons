@@ -6,9 +6,6 @@ import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.fei.root.common.utils.AppInfo;
-import com.fei.root.common.utils.Storage;
-
 import org.json.JSONObject;
 
 import java.io.PrintWriter;

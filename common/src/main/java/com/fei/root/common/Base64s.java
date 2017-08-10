@@ -1,10 +1,10 @@
-package com.fei.root.common.utils;
+package com.fei.root.common;
 
 import android.util.Base64;
 
-public class Base64Utils {
+public class Base64s {
 
-    public static final int FLAG = Base64.NO_WRAP | Base64.URL_SAFE;
+    private static final int FLAG = Base64.NO_WRAP | Base64.URL_SAFE;
 
     public static byte[] encode(byte[] input) {
         return Base64.encode(input, FLAG);

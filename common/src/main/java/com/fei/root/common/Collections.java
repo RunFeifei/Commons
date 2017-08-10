@@ -1,4 +1,4 @@
-package com.fei.root.common.utils;
+package com.fei.root.common;
 
 import java.util.Collection;
 import java.util.List;

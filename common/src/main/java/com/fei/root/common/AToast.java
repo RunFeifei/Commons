@@ -1,4 +1,4 @@
-package com.fei.root.common.toast;
+package com.fei.root.common;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,9 +14,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-
-import com.fei.root.common.MultiApplication;
-import com.fei.root.common.R;
 
 import java.lang.ref.WeakReference;
 

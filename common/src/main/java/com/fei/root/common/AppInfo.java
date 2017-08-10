@@ -1,4 +1,4 @@
-package com.fei.root.common.utils;
+package com.fei.root.common;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -10,14 +10,12 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.fei.root.common.MultiApplication;
-
 
 public class AppInfo {
 
     private static final String META_CLIENT_TYPE = "client_type";
     private static final String META_CHANNEL_NAME = "channel_name";
-    private static final String META_UNKNOWN = "unknown";
+    private static final String META_NULL = "";
 
 
     /*******************************package Info*******************************/
@@ -26,7 +24,7 @@ public class AppInfo {
         try {
             return context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
         } catch (NameNotFoundException e) {
-            Log.e("AppInfo",e.getMessage());
+            Log.e("AppInfo", e.getMessage());
         }
         return null;
     }
@@ -48,7 +46,7 @@ public class AppInfo {
                     .GET_META_DATA)
                     .metaData;
         } catch (NameNotFoundException e) {
-            Log.e("AppInfo",e.getMessage());
+            Log.e("AppInfo", e.getMessage());
 
         }
         return null;
@@ -56,11 +54,11 @@ public class AppInfo {
 
     public static String getMetaInfo(String key) {
         if (getMetaData() == null) {
-            return META_UNKNOWN;
+            return META_NULL;
         }
         String metaInfo = getMetaData().getString(key);
         if (metaInfo == null) {
-            metaInfo = META_UNKNOWN;
+            metaInfo = META_NULL;
         }
         return metaInfo;
     }
@@ -101,7 +99,7 @@ public class AppInfo {
         try {
             deviceId = ((TelephonyManager) MultiApplication.getContext().getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
         } catch (Exception e) {
-            Log.e("AppInfo",e.getMessage());
+            Log.e("AppInfo", e.getMessage());
         }
         if (TextUtils.isEmpty(deviceId)) {
             return "";

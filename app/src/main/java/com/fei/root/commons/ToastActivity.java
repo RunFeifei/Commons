@@ -1,24 +1,8 @@
 package com.fei.root.commons;
 
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.PixelFormat;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.PopupWindow;
-import android.widget.TextView;
 
-import com.fei.root.common.MultiApplication;
-import com.fei.root.common.toast.AToast;
+import com.fei.root.common.AToast;
 import com.fei.root.commons.base.BaseActivity;
 
 import butterknife.OnClick;
@@ -49,11 +33,6 @@ public class ToastActivity extends BaseActivity {
     @OnClick(R.id.btn1)
     public void btn1() {
     }
-
-
-
-
-
 
 
 }

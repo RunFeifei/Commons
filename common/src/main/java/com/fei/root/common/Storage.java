@@ -1,11 +1,9 @@
-package com.fei.root.common.utils;
+package com.fei.root.common;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-
-import com.fei.root.common.MultiApplication;
 
 import java.io.Closeable;
 import java.io.FileInputStream;
@@ -36,7 +34,7 @@ public class Storage {
             return null;
         }
         T t = null;
-        String fileName = Base64Utils.encodeToString(key.getBytes());
+        String fileName = Base64s.encodeToString(key.getBytes());
         FileInputStream fis = null;
         ObjectInputStream ois = null;
         try {
@@ -56,7 +54,7 @@ public class Storage {
         if (context == null || Strings.isEmpty(key)) {
             return;
         }
-        String fileName = Base64Utils.encodeToString(key.getBytes());
+        String fileName = Base64s.encodeToString(key.getBytes());
         context.deleteFile(fileName);
     }
 
@@ -68,7 +66,7 @@ public class Storage {
             removeObject(context, key);
             return;
         }
-        String fileName = Base64Utils.encodeToString(key.getBytes());
+        String fileName = Base64s.encodeToString(key.getBytes());
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         try {

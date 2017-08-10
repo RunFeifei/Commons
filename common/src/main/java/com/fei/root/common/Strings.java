@@ -1,4 +1,4 @@
-package com.fei.root.common.utils;
+package com.fei.root.common;
 
 public class Strings {
 
