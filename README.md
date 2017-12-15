@@ -19,4 +19,6 @@ https://github.com/RunFeifei/Commons/tree/master/common/src/main/java/com/fei/ro
 private TextView textView;  
 点击时间映射使用OnClick注解  
 @OnClick(id = R.id.btn)  
-private void onClicker(View view)
+private void onClicker(View view)  
+# Utils  
+各种工具类 不一而足
