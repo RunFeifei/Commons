@@ -3,10 +3,12 @@ apply from: "./subproject-build.gradle"
 
 buildscript {
     repositories {
-        jcenter {
-            url "http://jcenter.bintray.com/"
+        maven {
+            url "${HTTP_MAVEN_GOOGLE}"
         }
-        mavenCentral()
+        maven {
+            url "${HTTP_MAVEN_DR}"
+        }
         maven {
             url "${HTTP_MAVEN_ALI}"
         }
@@ -25,6 +27,10 @@ buildscript {
         maven {
             url "${HTTP_MAVEN_BINTRAY}"
         }
+        jcenter {
+            url "http://jcenter.bintray.com/"
+        }
+        mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
@@ -39,10 +45,12 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter {
-            url "http://jcenter.bintray.com/"
+        maven {
+            url "${HTTP_MAVEN_GOOGLE}"
         }
-        mavenCentral()
+        maven {
+            url "${HTTP_MAVEN_DR}"
+        }
         maven {
             url "${HTTP_MAVEN_ALI}"
         }
@@ -61,6 +69,10 @@ allprojects {
         maven {
             url "${HTTP_MAVEN_BINTRAY}"
         }
+        jcenter {
+            url "http://jcenter.bintray.com/"
+        }
+        mavenCentral()
     }
 }
 

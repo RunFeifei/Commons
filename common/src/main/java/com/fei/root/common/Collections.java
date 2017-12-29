@@ -6,7 +6,7 @@ import java.util.Map;
 
 
 public class Collections {
-    private Collections() {/*hide*/}
+    private Collections() {throw new AssertionError("Collections constructor forbidden");}
 
     public static boolean isEmpty(Collection<?> source) {
         return source == null || source.isEmpty();
@@ -20,7 +20,7 @@ public class Collections {
         return isEmpty(source) ? 0 : source.size();
     }
 
-    public static void toString(List<String> list,String separator) {
+    public static void toString(List<String> list, String separator) {
         if (list == null || list.isEmpty()) {
             return;
         }
