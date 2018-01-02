@@ -2,6 +2,9 @@ apply plugin: 'com.android.library'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'com.novoda.bintray-release'
 
+def VERSION_CODE = 2
+def VERSION_NAME = "1.0.2"
+
 android {
     compileSdkVersion ANDROID_SDK_VERSION
     buildToolsVersion ANDROID_BUILD_TOOLS_VERSION
@@ -9,8 +12,8 @@ android {
     defaultConfig {
         minSdkVersion ANDROID_MIN_SDK_VERSION
         targetSdkVersion ANDROID_TARGET_SDK_VERSION
-        versionCode 1
-        versionName "1.0"
+        versionCode VERSION_CODE.toInteger()
+        versionName VERSION_NAME.toString()
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -64,6 +67,14 @@ publish {
     userOrg = 'feifei'
     groupId = 'com.bintray.run'
     artifactId = 'common'
-    publishVersion = '1.0.0'
+    publishVersion = VERSION_NAME.toString()
 }
 
+tasks.withType(JavaCompile) {
+    options.encoding = "utf-8"
+}
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    options.encoding = "utf-8"
+}
