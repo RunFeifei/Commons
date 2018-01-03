@@ -3,7 +3,6 @@ package com.fei.root.commons.base;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
@@ -13,8 +12,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dianrong.crnetwork.framework.view.IBaseView;
-import com.dianrong.crnetwork.response.RequestException;
 import com.fei.root.commons.R;
 import com.trello.rxlifecycle.components.support.RxFragment;
 
@@ -22,7 +19,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 
-public abstract class BaseFragment extends RxFragment implements IBaseView {
+public abstract class BaseFragment extends RxFragment {
 
     private View rootView;
     private BaseActivity activity;
@@ -171,36 +168,6 @@ public abstract class BaseFragment extends RxFragment implements IBaseView {
         return true;
     }
 
-    /*****************************IBaseView*****************************/
-    @Override
-    public boolean onRequestStart() {
-        return false;
-    }
-
-    @Override
-    public boolean onRequestCacell() {
-        return false;
-    }
-
-    @Override
-    public boolean onRequestEnd() {
-        return false;
-    }
-
-    @Override
-    public boolean onRequestError(RequestException exception) {
-        return false;
-    }
-
-    @Override
-    public boolean onPageVisible() {
-        return isVisible() || isResumed();
-    }
-
-    @Override
-    public FragmentManager onRequestIng() {
-        return getChildFragmentManager();
-    }
     /*****************************Utils*****************************/
     protected void toast(String content) {
         Toast.makeText(getContext(), content, Toast.LENGTH_SHORT).show();

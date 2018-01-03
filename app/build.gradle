@@ -3,13 +3,13 @@ apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'com.neenbedankt.android-apt'
 
 android {
-    compileSdkVersion ANDROID_SDK_VERSION
-    buildToolsVersion ANDROID_BUILD_TOOLS_VERSION
+    compileSdkVersion 25
+    buildToolsVersion "26.0.2"
     defaultConfig {
         multiDexEnabled true
         applicationId "com.fei.root.commons"
-        minSdkVersion ANDROID_MIN_SDK_VERSION
-        targetSdkVersion ANDROID_TARGET_SDK_VERSION
+        minSdkVersion 21
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -44,15 +44,11 @@ android {
         exclude '**/pom.properties'
     }
 
-    lintOptions {
-        abortOnError false
-    }
-
 }
 
 dependencies {
-    compile "com.android.support:support-v4:$ANDROID_SUPPORT_VERSION"
-    compile "com.android.support:appcompat-v7:$ANDROID_SUPPORT_VERSION"
+    compile "com.android.support:support-v4:25.4.0"
+    compile "com.android.support:appcompat-v7:25.4.0"
 
     compile 'com.jakewharton:butterknife:8.5.1'
     compile 'com.trello:rxlifecycle:0.3.0'
@@ -61,6 +57,7 @@ dependencies {
     compile 'com.android.support:multidex:1.0.1'
     testCompile 'junit:junit:4.12'
     apt 'com.jakewharton:butterknife-compiler:8.5.1'
-    compile 'com.bintray.run:crnetwork:1.0.2'
-    compile project(path: ':common')
+    compile 'com.bintray.run:common:1.0.2'
+//    compile project(path: ':common')
+
 }

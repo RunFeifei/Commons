@@ -1,17 +1,18 @@
 apply plugin: 'com.android.library'
 apply plugin: 'me.tatarka.retrolambda'
+apply plugin: "maven"
 apply plugin: 'com.novoda.bintray-release'
 
 def VERSION_CODE = 2
 def VERSION_NAME = "1.0.2"
 
 android {
-    compileSdkVersion ANDROID_SDK_VERSION
-    buildToolsVersion ANDROID_BUILD_TOOLS_VERSION
+    compileSdkVersion 25
+    buildToolsVersion "26.0.2"
 
     defaultConfig {
-        minSdkVersion ANDROID_MIN_SDK_VERSION
-        targetSdkVersion ANDROID_TARGET_SDK_VERSION
+        minSdkVersion 21
+        targetSdkVersion 25
         versionCode VERSION_CODE.toInteger()
         versionName VERSION_NAME.toString()
         multiDexEnabled true
@@ -22,6 +23,8 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
         }
     }
 
@@ -52,15 +55,18 @@ android {
     lintOptions {
         abortOnError false
     }
+
+    publishNonDefault true
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile "com.android.support:support-v4:$ANDROID_SUPPORT_VERSION"
-    compile "com.android.support:appcompat-v7:$ANDROID_SUPPORT_VERSION"
-    compile 'com.android.support:multidex:1.0.1'
+    compile "com.android.support:support-v4:25.4.0"
+    compile "com.android.support:appcompat-v7:25.4.0"
+    compile 'com.android.support:multidex:1.0.2'
     compile 'com.trello:rxlifecycle:0.3.0'
     compile 'com.trello:rxlifecycle-components:0.3.0'
+    compile 'io.reactivex:rxjava:1.2.2'
 }
 
 publish {
@@ -71,10 +77,27 @@ publish {
 }
 
 tasks.withType(JavaCompile) {
-    options.encoding = "utf-8"
+    options.encoding = "UTF-8"
 }
+
 task javadoc(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    options.encoding = "utf-8"
+    options.encoding = "UTF-8"
+    options.charSet  = "UTF-8"
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
 }

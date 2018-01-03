@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
@@ -15,14 +14,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dianrong.crnetwork.framework.view.IBaseView;
-import com.dianrong.crnetwork.response.RequestException;
 import com.fei.root.commons.R;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public abstract class BaseActivity extends BasePermissionsActivity implements IBaseView {
+public abstract class BaseActivity extends BasePermissionsActivity {
 
     private Unbinder butterKinfeBinder;
     private View rootView;
@@ -146,37 +143,6 @@ public abstract class BaseActivity extends BasePermissionsActivity implements IB
         return true;
     }
 
-    /*****************************IBaseView*****************************/
-    @Override
-    public boolean onRequestStart() {
-        return false;
-    }
-
-    @Override
-    public boolean onRequestCacell() {
-        return false;
-    }
-
-    @Override
-    public boolean onRequestEnd() {
-        return false;
-    }
-
-    @Override
-    public boolean onRequestError(RequestException exception) {
-        return false;
-    }
-
-    @TargetApi(17)
-    @Override
-    public boolean onPageVisible() {
-        return !(isDestroyed() || isFinishing());
-    }
-
-    @Override
-    public FragmentManager onRequestIng() {
-        return getSupportFragmentManager();
-    }
 
     /*****************************Utils*****************************/
     protected void toast(String content) {
