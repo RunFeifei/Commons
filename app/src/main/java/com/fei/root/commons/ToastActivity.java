@@ -2,7 +2,6 @@ package com.fei.root.commons;
 
 import android.os.Bundle;
 
-import com.fei.root.common.AToast;
 import com.fei.root.commons.base.BaseActivity;
 
 import butterknife.OnClick;
@@ -27,7 +26,6 @@ public class ToastActivity extends BaseActivity {
 
     @OnClick(R.id.btn)
     public void onBtnShowShortToastSafeClicked() {
-        AToast.get(this).setText("" + i++).show();
     }
 
     @OnClick(R.id.btn1)

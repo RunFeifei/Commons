@@ -10,6 +10,9 @@ buildscript {
             url "${HTTP_MAVEN_DR}"
         }
         maven {
+            url "${HTTP_MAVEN_BINTRAY}"
+        }
+        maven {
             url "${HTTP_MAVEN_ALI}"
         }
         maven {
@@ -23,9 +26,6 @@ buildscript {
         }
         maven {
             url "${HTTP_MAVEN_JIT}"
-        }
-        maven {
-            url "${HTTP_MAVEN_BINTRAY}"
         }
         jcenter {
             url "http://jcenter.bintray.com/"
@@ -49,6 +49,9 @@ allprojects {
             url "${HTTP_MAVEN_GOOGLE}"
         }
         maven {
+            url "${HTTP_MAVEN_BINTRAY}"
+        }
+        maven {
             url "${HTTP_MAVEN_DR}"
         }
         maven {
@@ -66,13 +69,14 @@ allprojects {
         maven {
             url "${HTTP_MAVEN_JIT}"
         }
-        maven {
-            url "${HTTP_MAVEN_BINTRAY}"
-        }
         jcenter {
             url "http://jcenter.bintray.com/"
         }
         mavenCentral()
+    }
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('encoding', 'UTF-8')
     }
 }
 

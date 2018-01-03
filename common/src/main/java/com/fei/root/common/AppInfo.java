@@ -1,5 +1,7 @@
 package com.fei.root.common;
 
+import android.Manifest;
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -94,15 +96,16 @@ public class AppInfo {
         return context.getPackageManager().getApplicationLabel(context.getApplicationInfo());
     }
 
-    public static String getImei() {
+    @TargetApi(23)
+    public static String getImei(Context context) {
+        if (context.checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+            return null;
+        }
         String deviceId = null;
         try {
             deviceId = ((TelephonyManager) MultiApplication.getContext().getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
         } catch (Exception e) {
             Log.e("AppInfo", e.getMessage());
-        }
-        if (TextUtils.isEmpty(deviceId)) {
-            return "";
         }
         return deviceId;
     }
