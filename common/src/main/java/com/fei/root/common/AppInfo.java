@@ -96,6 +96,10 @@ public class AppInfo {
         return context.getPackageManager().getApplicationLabel(context.getApplicationInfo());
     }
 
+    public static CharSequence getBase64AppName(Context context) {
+        return Base64s.encodeToString(context.getPackageManager().getApplicationLabel(context.getApplicationInfo()).toString().getBytes());
+    }
+
     @TargetApi(23)
     public static String getImei(Context context) {
         if (context.checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {

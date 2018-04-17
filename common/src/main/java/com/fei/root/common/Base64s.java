@@ -17,4 +17,11 @@ public class Base64s {
     public static byte[] decode(byte[] input) {
         return Base64.decode(input, FLAG);
     }
+
+    public static String base64decode(String string) {
+        return new String(Base64.decode(string, Base64.DEFAULT));
+    }
+    public static String enCode(String string) {
+        return Base64.encodeToString(string.getBytes(), Base64.DEFAULT);
+    }
 }

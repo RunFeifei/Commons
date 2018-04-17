@@ -2,9 +2,10 @@ package com.fei.root.common.Rxbus;
 
 /**
  * Created by PengFeifei on 17-5-12.
+ *
  */
 
-public final class BusEvent {
+public class BusEvent {
 
     private int eventId;
     private String content;
