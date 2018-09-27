@@ -7,9 +7,6 @@ buildscript {
             url "${HTTP_MAVEN_GOOGLE}"
         }
         maven {
-            url "${HTTP_MAVEN_DR}"
-        }
-        maven {
             url "${HTTP_MAVEN_BINTRAY}"
         }
         maven {
@@ -50,9 +47,6 @@ allprojects {
         }
         maven {
             url "${HTTP_MAVEN_BINTRAY}"
-        }
-        maven {
-            url "${HTTP_MAVEN_DR}"
         }
         maven {
             url "${HTTP_MAVEN_ALI}"

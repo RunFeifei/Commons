@@ -47,17 +47,12 @@ android {
 }
 
 dependencies {
-    compile "com.android.support:support-v4:25.4.0"
-    compile "com.android.support:appcompat-v7:25.4.0"
 
     compile 'com.jakewharton:butterknife:8.5.1'
     compile 'com.trello:rxlifecycle:0.3.0'
     compile 'com.trello:rxlifecycle-components:0.3.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
-    compile 'com.android.support:multidex:1.0.1'
-    testCompile 'junit:junit:4.12'
     apt 'com.jakewharton:butterknife-compiler:8.5.1'
-    compile 'com.bintray.run:common:1.0.2'
-//    compile project(path: ':common')
+//    compile 'com.bintray.run:common:1.0.2'
+    compile project(path: ':common')
 
 }

@@ -17,6 +17,8 @@ import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
 
+import rx.functions.Action0;
+
 /**
  * Created by PengFeifei on 17-8-9.
  * 系统Toast有通知权限,WindowManager有悬浮窗权限
@@ -25,7 +27,6 @@ import java.lang.ref.WeakReference;
 
 public class AToast {
 
-    private static AToast instance;
     private PopupWindow popupWindow;
     private Activity activity;
 
@@ -41,17 +42,12 @@ public class AToast {
     }
 
     public static AToast get(Activity activity) {
-        if (instance == null) {
-            synchronized (AToast.class) {
-                instance = new AToast(activity);
-            }
-        }
-        return instance;
+        return new AToast(activity);
     }
 
     public AToast setText(CharSequence charSequence) {
         LayoutInflater inflate = (LayoutInflater)
-                MultiApplication.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflate.inflate(R.layout.transient_notification, null);
         TextView textView = (TextView) view.findViewById(R.id.message);
         textView.setText(charSequence);
@@ -61,7 +57,7 @@ public class AToast {
 
     public AToast setText(@StringRes int stringId) {
         LayoutInflater inflate = (LayoutInflater)
-                MultiApplication.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflate.inflate(R.layout.transient_notification, null);
         TextView textView = (TextView) view.findViewById(R.id.message);
         textView.setText(stringId);
@@ -76,7 +72,7 @@ public class AToast {
 
     public AToast setView(@LayoutRes int layoutId) {
         LayoutInflater inflate = (LayoutInflater)
-                MultiApplication.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflate.inflate(layoutId, null);
         if (view == null) {
             return this;
@@ -91,10 +87,29 @@ public class AToast {
     }
 
     public void show() {
-        int y = MultiApplication.getContext().getResources().getDimensionPixelSize(R.dimen.toast);
+        show(null);
+    }
+
+    public void show(Action0 afterShowCallBack) {
+        if (activity.isDestroyed() || activity.isFinishing()) {
+            return;
+        }
+        int y = activity.getResources().getDimensionPixelSize(R.dimen.toast);
         y = (int) (1.75 * y);
         popupWindow.showAtLocation(activity.getWindow().getDecorView(), Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM, 0, y);
-        new Handler(Looper.getMainLooper()).postDelayed(() -> popupWindow.dismiss(), 1000);
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (activity.isDestroyed() || activity.isFinishing()) {
+                    return;
+                }
+                popupWindow.dismiss();
+                if (afterShowCallBack == null) {
+                    return;
+                }
+                afterShowCallBack.call();
+            }
+        }, 1000);
     }
 
 

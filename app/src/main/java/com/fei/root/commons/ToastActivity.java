@@ -2,9 +2,11 @@ package com.fei.root.commons;
 
 import android.os.Bundle;
 
+import com.fei.root.common.AToast;
 import com.fei.root.commons.base.BaseActivity;
 
 import butterknife.OnClick;
+import rx.functions.Action0;
 
 /**
  * Created by PengFeifei on 17-8-9.
@@ -30,6 +32,12 @@ public class ToastActivity extends BaseActivity {
 
     @OnClick(R.id.btn1)
     public void btn1() {
+        AToast.get(this).setText("ddededededededed").show(new Action0() {
+            @Override
+            public void call() {
+                finish();
+            }
+        });
     }
 
 
