@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/textNum"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="42dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/shape_bonus_num"
+        android:gravity="center"
+        android:text="64578"
+        android:textColor="#ffffffff"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@+id/img"
+        app:layout_constraintLeft_toLeftOf="@+id/img"
+        app:layout_constraintTop_toTopOf="@+id/img" />
+
+    <FrameLayout
+        android:id="@+id/layProgress"
+        android:layout_width="120dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintLeft_toLeftOf="@id/textNum"
+        app:layout_constraintTop_toBottomOf="@id/textNum">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_video_progress_bg" />
+
+        <View
+            android:id="@+id/viewProgress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_video_progress" />
+
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/imgFinish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baobei"
+        app:layout_constraintBottom_toBottomOf="@id/layProgress"
+        app:layout_constraintLeft_toRightOf="@id/layProgress"
+        app:layout_constraintTop_toTopOf="@id/layProgress" />
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="50dp"
+        android:layout_height="44dp"
+        android:src="@drawable/ic_money" />
+
+
+    <FrameLayout
+        android:id="@+id/layTip"
+        android:layout_width="139dp"
+        android:layout_height="32dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="2dp"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img"
+        tools:visibility="visible">
+
+        <ImageView
+            android:layout_width="139dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_bonus_tip" />
+
+        <TextView
+            android:layout_width="139dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:text="看视频得到元宝啦"
+            android:textColor="#ff03022b"
+            android:textSize="14sp" />
+
+    </FrameLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -54,5 +54,7 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.5.1'
 //    compile 'com.bintray.run:common:1.0.2'
     compile project(path: ':common')
+    compile 'com.android.support.constraint:constraint-layout:1.1.2'
+
 
 }
