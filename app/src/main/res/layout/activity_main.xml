@@ -21,4 +21,10 @@
         android:background="#00ff00"
         android:text="测试" />
 
+    <com.fei.root.commons.views.CircleBonusBar
+        android:id="@+id/ttt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></com.fei.root.commons.views.CircleBonusBar>
+
+
 </LinearLayout>

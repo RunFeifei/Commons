@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textTip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/ic_yellow_tip"
+        android:gravity="center"
+        android:paddingLeft="14dp"
+        android:paddingTop="5dp"
+        android:paddingRight="14dp"
+        android:paddingBottom="5dp"
+        android:text="看视频得到元宝啦"
+        android:textColor="#ff03022b"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+
+    <FrameLayout
+        android:layout_width="57dp"
+        android:layout_height="57dp"
+        android:background="@drawable/shape_bonus_bg_circle">
+
+
+        <FrameLayout
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/imgPacket"
+                android:layout_width="36dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_bonus_packet"
+                tools:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/layNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/textNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffc21e"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    tools:text="+1400" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_precious" />
+
+            </LinearLayout>
+
+
+        </FrameLayout>
+
+        <com.fei.root.commons.views.HollowCirclebar
+            android:id="@+id/circleBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </FrameLayout>
+
+
+</LinearLayout>
